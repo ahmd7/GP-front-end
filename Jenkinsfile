@@ -5,7 +5,7 @@ pipeline {
         DOCKER_HUB_CREDENTIALS = 'docker-cred'
         SLACK_CREDENTIALS = 'slack-bot'
         DOCKER_IMAGE_NAME = 'vhmds/front-end'
-        SLACK_CHANNEL = '#Devops'
+        SLACK_CHANNEL = '#devops'
     }
 
     stages {
