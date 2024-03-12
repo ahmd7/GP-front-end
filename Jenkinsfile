@@ -38,7 +38,7 @@ pipeline {
             }
         }
 
-    
+    }
     post {
         failure {
             // Notify Slack about the failed build
