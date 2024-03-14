@@ -48,13 +48,13 @@ pipeline {
                 script {
 
                     // Remove existing container (if exists)
-                    sh "ssh 100.24.116.207 docker rm -f ${DOCKER_IMAGE_NAME} || true"
+                    sh "docker rm -f ${DOCKER_IMAGE_NAME} || true"
 
                     // Load Docker image on Jenkins slave
-                    sh "ssh 100.24.116.207 cd /home/ubuntu/GraduationProjectrepo"
+                    sh "cd /home/ubuntu/GraduationProjectrepo"
 
                     // Run Docker container
-                    sh "ssh 100.24.116.207 docker compose up -d"
+                    sh "docker compose up -d"
                 }
             }
         }
