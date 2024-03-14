@@ -19,7 +19,7 @@ pipeline {
             steps {
                 script {
                     // Build Docker image
-                    def dockerImage = docker.build("${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}")
+                    def dockerImage = docker.build("${DOCKER_IMAGE_NAME}")
 
                     // Push Docker image to Docker Hub
                     docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
