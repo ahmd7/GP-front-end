@@ -6,6 +6,7 @@ pipeline {
         SLACK_CREDENTIALS = 'slack-bot'
         DOCKER_IMAGE_NAME = 'vhmds/front-end'
         SLACK_CHANNEL = '#devops'
+        JENKINS_SLAVE_LABEL = 'docker-remote'
     }
 
     stages {
@@ -37,6 +38,27 @@ pipeline {
                 }
             }
         }
+        stage('Deploy to Jenkins Slave') {
+            agent {
+                node {
+                    label "${JENKINS_SLAVE_LABEL}"
+                }
+            }
+            steps {
+                script {
+
+                    // Remove existing container (if exists)
+                    sh "ssh jenkins-slave docker rm -f ${DOCKER_IMAGE_NAME} || true"
+
+                    // Load Docker image on Jenkins slave
+                    sh "ssh jenkins-slave cd /home/ubuntu/GraduationProjectrepo"
+
+                    // Run Docker container
+                    sh "ssh jenkins-slave docker compose up -d"
+                }
+            }
+        }
+    }
 
     }
     post {
