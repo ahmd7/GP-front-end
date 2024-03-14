@@ -67,4 +67,3 @@ pipeline {
             slackSend(color: '#FF0000', message: "Docker image build failed! \n${BUILD_URL}", channel: SLACK_CHANNEL)
         }
     }
-}
