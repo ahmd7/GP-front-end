@@ -1,9 +1,5 @@
 pipeline {
-        agent {
-                node {
-                    label "main"
-                }
-            }
+        agent any
     environment {
         DOCKER_HUB_CREDENTIALS = 'docker-cred'
         SLACK_CREDENTIALS = 'slack-bot'
