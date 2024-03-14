@@ -1,6 +1,9 @@
 pipeline {
-    agent any
-
+        agent {
+                node {
+                    label "${JENKINS_SLAVE_LABEL}"
+                }
+            }
     environment {
         DOCKER_HUB_CREDENTIALS = 'docker-cred'
         SLACK_CREDENTIALS = 'slack-bot'
