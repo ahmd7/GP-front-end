@@ -41,26 +41,7 @@ pipeline {
                 }
             }
         }
-        stage('Deploy to Jenkins Slave') {
-            agent {
-                node {
-                    label "docker-remote"
-                }
-            }
-            steps {
-                script {
-
-                    // Remove existing container (if exists)
-                    sh "docker rm -f ${DOCKER_IMAGE_NAME} || true"
-                    sh "echo $VARNAME"
-                    // Load Docker image on Jenkins slave
-                    sh "cd /home/ubuntu/GraduationProjectrepo"
-
-                    // Run Docker container
-                    sh "docker compose up -d"
-                }
-            }
-        }
+        
     }
 
     }
@@ -70,3 +51,4 @@ pipeline {
             slackSend(color: '#FF0000', message: "Docker image build failed! \n${BUILD_URL}", channel: SLACK_CHANNEL)
         }
     }
+
