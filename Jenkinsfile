@@ -44,7 +44,7 @@ pipeline {
         stage('Deploy to Jenkins Slave') {
             agent {
                 node {
-                    label "${JENKINS_SLAVE_LABEL}"
+                    label "docker-remote"
                 }
             }
             steps {
