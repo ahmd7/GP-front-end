@@ -52,7 +52,7 @@ pipeline {
 
                     // Remove existing container (if exists)
                     sh "docker rm -f ${DOCKER_IMAGE_NAME} || true"
-
+                    sh "echo $VARNAME"
                     // Load Docker image on Jenkins slave
                     sh "cd /home/ubuntu/GraduationProjectrepo"
 
